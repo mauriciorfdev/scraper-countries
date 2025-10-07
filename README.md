@@ -2,7 +2,7 @@
 
 ## About Project
 
-Simple project to scraping and storing data into a database using Express (server), Puppeteer (scraper), and MongoDB/Mongoose (database)
+Simple project to extract and store data in a database using Express (server), Puppeteer (scraper), and MongoDB Atlas/Mongoose (database)
 
 ## Folder Structure Overview
 
