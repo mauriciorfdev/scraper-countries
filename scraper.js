@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-async function scrapSite() {
+async function scrapeSite() {
   const url = 'https://www.scrapethissite.com/pages/simple/';
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -23,4 +23,4 @@ async function scrapSite() {
   return result;
 }
 
-module.exports = { scrapSite };
+module.exports = { scrapeSite };

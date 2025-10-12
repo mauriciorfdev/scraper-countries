@@ -6,6 +6,7 @@ const {
   getSingleCountry,
   setCountry,
   setScrapedCountries,
+  clearDB,
 } = require('./controllers/countryController');
 
 const connectDB = require('./config/db');
@@ -27,7 +28,8 @@ app.get('/', (req, res) => {
 app.get('/api/countries', getCountries);
 app.get('/api/countries/:id', getSingleCountry);
 app.post('/api/countries', setCountry);
-app.post('/scrap-countries', setScrapedCountries);
+app.post('/scrape', setScrapedCountries);
+app.delete('/clear', clearDB);
 
 connectDB();
 

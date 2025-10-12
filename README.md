@@ -4,6 +4,8 @@
 
 Simple project to extract and store data in a database using Express (server), Puppeteer (scraper), and MongoDB Atlas/Mongoose (database)
 
+[Link country data](https://www.scrapethissite.com/pages/simple/)
+
 ## Folder Structure Overview
 
 ```

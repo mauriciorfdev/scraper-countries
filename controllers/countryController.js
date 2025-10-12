@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose');
 const { CountryModel } = require('../models/countryModel');
-const { scrapSite } = require('../scraper');
+const { scrapeSite } = require('../scraper');
 
 //DESC      get all countries
 //ROUTE     GET /api/countries
@@ -58,14 +58,27 @@ async function setCountry(req, res) {
   }
 }
 
-//DESC      scrap countries and save them into DB
-//ROUTE     POST /scrap-countries
+//DESC      scrape countries and save them into DB
+//ROUTE     POST /scrape
 async function setScrapedCountries(req, res) {
   try {
-    const results = await scrapSite();
+    const results = await scrapeSite();
     /* console.log(results); */
     await CountryModel.insertMany(results);
     return res.status(201).json({ success: true, inserted: results.length });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+//DESC      delete all countries from DB
+//ROUTE     DELETE /clear
+async function clearDB(req, res) {
+  try {
+    await CountryModel.deleteMany({});
+    return res
+      .status(200)
+      .json({ success: true, msg: `Countries collection deleted!` });
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -76,4 +89,5 @@ module.exports = {
   getSingleCountry,
   setCountry,
   setScrapedCountries,
+  clearDB,
 };
